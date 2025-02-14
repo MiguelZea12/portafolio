@@ -1,0 +1,97 @@
+.experience h2 {
+  font-size: 2.75rem;
+  background-clip: text;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.timeline {
+  list-style: none;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.timeline::before {
+  background: linear-gradient(180deg, #aa367c 0%, #ff6464 100%);
+  left: 32px;
+  width: 3px;
+}
+
+.timeline-item {
+  margin-bottom: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(10px);
+}
+
+.timeline-point {
+  left: -8px;
+  width: 20px;
+  height: 20px;
+  background: #ff6464;
+  box-shadow: 0 0 15px rgba(255, 100, 100, 0.5);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.timeline-content h3 {
+  color: #fff;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.timeline-date {
+  color: rgba(170, 54, 124, 0.8); /* Color rojito con mayor opacidad */
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  -webkit-background-clip: text; /* Aplica el gradiente al texto */
+  -webkit-text-fill-color: transparent; /* Hace que el texto sea transparente para mostrar el gradiente */
+  background-clip: text; /* Compatibilidad con navegadores modernos */
+  text-shadow: 0 0 5px rgba(74, 47, 189, 0.5); /* Efecto de brillo */
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.timeline-description {
+  color: #d1d1d1;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.recent-badge {
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.tech-badges span {
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  border: 1px solid #aa367c;
+}
+.tech-badge:hover {
+  background: rgba(170, 54, 124, 0.25);
+  transform: translateY(-1px);
+}

@@ -1,0 +1,29 @@
+.skill-bx {
+    text-align: center;
+}
+
+.text-skills{
+    margin: 14px 0px 50px !important;
+}
+
+.skill-slider .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    margin: 10px;
+}
+
+.skill-slider .item img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.skill-slider .item h5 {
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+}

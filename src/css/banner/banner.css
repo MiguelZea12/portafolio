@@ -1,0 +1,20 @@
+.banner img {
+    max-width: 100%; /* La imagen no será más ancha que su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 10px; /* Opcional: para darle un borde redondeado */
+}
+
+/* Si deseas un tamaño fijo */
+.banner img {
+    width: 60%; /* Ajusta el ancho según sea necesario */
+    height: 50%; /* Ajusta la altura según sea necesario */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+}
+
+/* Si deseas que la imagen sea responsive */
+@media (max-width: 768px) {
+    .banner img {
+        width: 200px; /* Tamaño más pequeño para dispositivos móviles */
+        height: 200px;
+    }
+}
