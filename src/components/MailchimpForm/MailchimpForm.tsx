@@ -10,13 +10,13 @@ export const MailchimpForm = () => {
         url={postUrl}
         render={({ subscribe, status, message }: {
           subscribe: (formData: Record<string, any>) => void;
-          status: string;
-          message: string;
+          status: string | null;
+          message?: string;
         }) => (
           <Newsletter
-            status={status}
+            status={status === 'sending' || status === 'error' || status === 'success' ? status : null}
             message={message}
-            onValidated={(formData: Record<string, any>) => subscribe(formData)}
+            onValidated={(formData: { EMAIL: string }) => subscribe(formData)}
           />
         )}
         />
