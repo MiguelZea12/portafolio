@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // Función para scroll suave
-export const scrollToSection = (sectionId) => {
+export const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId);
   if (element) {
     element.scrollIntoView({
@@ -13,7 +13,7 @@ export const scrollToSection = (sectionId) => {
 };
 
 // Función para detectar si un elemento está visible
-export const useOnScreen = (ref, threshold = 0.1) => {
+export const useOnScreen = (ref: React.RefObject<Element>, threshold: number = 0.1) => {
   const [isIntersecting, setIntersecting] = useState(false);
 
   useEffect(() => {
@@ -33,26 +33,38 @@ export const useOnScreen = (ref, threshold = 0.1) => {
 };
 
 // Función para validar formularios
-export const validateEmail = (email) => {
+export const validateEmail = (email: string) => {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
 };
 
-export const validateForm = (formData) => {
-  const errors = {};
-  
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
+export const validateForm = (formData: FormData) => {
+  const errors: FormErrors = {};
+
   if (!formData.name || formData.name.trim().length < 2) {
     errors.name = 'El nombre debe tener al menos 2 caracteres';
   }
-  
+
   if (!formData.email || !validateEmail(formData.email)) {
     errors.email = 'Por favor ingresa un email válido';
   }
-  
+
   if (!formData.message || formData.message.trim().length < 10) {
     errors.message = 'El mensaje debe tener al menos 10 caracteres';
   }
-  
+
   return {
     isValid: Object.keys(errors).length === 0,
     errors
@@ -60,7 +72,7 @@ export const validateForm = (formData) => {
 };
 
 // Función para formatear fechas
-export const formatDate = (date) => {
+export const formatDate = (date: string | number | Date) => {
   return new Intl.DateTimeFormat('es-ES', {
     year: 'numeric',
     month: 'long',
