@@ -1,20 +1,38 @@
+/* Estilos profesionales para la imagen del banner */
 .banner img {
-    max-width: 100%; /* La imagen no será más ancha que su contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    border-radius: 10px; /* Opcional: para darle un borde redondeado */
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Si deseas un tamaño fijo */
-.banner img {
-    width: 60%; /* Ajusta el ancho según sea necesario */
-    height: 50%; /* Ajusta la altura según sea necesario */
-    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+.banner img:hover {
+    transform: scale(1.05);
 }
 
-/* Si deseas que la imagen sea responsive */
+/* Responsividad mejorada para la imagen */
+@media (max-width: 991px) {
+    .banner img {
+        width: 70%;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
 @media (max-width: 768px) {
     .banner img {
-        width: 200px; /* Tamaño más pequeño para dispositivos móviles */
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .banner img {
+        width: 200px;
         height: 200px;
     }
 }

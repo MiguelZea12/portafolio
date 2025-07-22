@@ -51,23 +51,25 @@ export const Banner = () => {
   return (
     <section className="banner" id="home">
       <Container>
-        <Row className="aligh-items-center">
-          <Col xs={12} md={6} xl={7}>
+        <Row className="align-items-center justify-content-center">
+          <Col xs={12} md={6} xl={7} className="order-2 order-md-1">
             <TrackVisibility>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+              <div className={isVisible ? "animate__animated animate__fadeInLeft" : ""}>
                 <span className="tagline">Bienvenido a mi Portafolio</span>
                 <h1>{`Hola, yo soy Alejandro`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Full Stack Developer", "Backend Developer", "Software Engineer", "Scrum Master" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Ingeniero de Software especializado en desarrollo de aplicaciones y sistemas web. Con experiencia en desarrollo web, aplicaciones moviles y proyectos prácticos. Certificado como Scrum Master por Platzi, con experiencia liderando equipos. Actualmente enfocado en ampliar mis habilidades como Ingeniero de Datos.</p>
-                  <button onClick={() => console.log('connect')}>Conectemos <ArrowRightCircle size={25} /></button>
+                  <p>Ingeniero de Software especializado en desarrollo de aplicaciones y sistemas web. Con experiencia en desarrollo web, aplicaciones móviles y proyectos prácticos. Certificado como Scrum Master por Platzi, con experiencia liderando equipos. Actualmente enfocado en ampliar mis habilidades como Ingeniero de Datos.</p>
+                  <button onClick={() => window.location.href='#contact'} className="btn-connect">
+                    Conectemos <ArrowRightCircle size={25} />
+                  </button>
               </div>}
             </TrackVisibility>
           </Col>
-          <Col xs={12} md={6} xl={5}>
+          <Col xs={12} md={6} xl={5} className="order-1 order-md-2 text-center">
             <TrackVisibility>
               {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Header Img"/>
+                <div className={isVisible ? "animate__animated animate__fadeInRight" : ""}>
+                  <img src={headerImg} alt="Alejandro Zea - Full Stack Developer"/>
                 </div>}
             </TrackVisibility>
           </Col>

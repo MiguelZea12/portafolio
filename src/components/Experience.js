@@ -7,23 +7,26 @@ import "../css/experience/experience.css";
 export const Experience = () => {
   const experiences = [
     {
-      title: "Desarrollador Full Stack – AFIFSYSTEMS",
+      title: "Desarrollador Full Stack",
+      company: "AFIFSYSTEMS",
       date: "Julio 2023 – Actualidad",
-      description: "Desarrollo de soluciones de software a medida. Implementación y optimización de una arquitectura de microservicios, mejorando la escalabilidad y mantenibilidad del sistema. Experiencia en la gestión de pipelines CI/CD utilizando BitBucket, asegurando procesos de despliegue eficientes y sin problemas. Uso de Docker para la contenerización y aprovechamiento de servicios de AWS para soluciones robustas en la nube.",
+      description: "Desarrollo de soluciones de software a medida con arquitectura de microservicios. Implementación y optimización mejorando la escalabilidad y mantenibilidad del sistema. Gestión de pipelines CI/CD utilizando BitBucket, asegurando procesos de despliegue eficientes. Uso de Docker para contenerización y aprovechamiento de servicios AWS para soluciones robustas en la nube.",
       isRecent: true,
-      techs: ["AWS", "Docker", "CI/CD", "Microservicios", "React", "NestJs", "NextJs", "Typescript", "PHP", "postgreSQL"] 
+      techs: ["AWS", "Docker", "CI/CD", "Microservicios", "React", "NestJs", "NextJs", "TypeScript", "PHP", "PostgreSQL"] 
     },
     {
-      title: "Desarrollador Full Stack – ROBERT PONCE COMPANY",
+      title: "Desarrollador Full Stack",
+      company: "ROBERT PONCE COMPANY",
       date: "Agosto 2024 – Septiembre 2024",
-      description: "Desarrollé una aplicación que utiliza la API de OpenAI para la comparación de proformas mediante el análisis de imágenes. Aprendí sobre la API de OpenAI y su integración en proyectos con NestJS.",
-      techs: ["PHP", "PostgreSQL", "Javascript", "Laravel"]
+      description: "Desarrollé una aplicación innovadora que utiliza la API de OpenAI para la comparación inteligente de proformas mediante análisis avanzado de imágenes. Integración completa de IA con NestJS para optimizar procesos empresariales.",
+      techs: ["PHP", "PostgreSQL", "JavaScript", "Laravel", "OpenAI API"]
     },
     {
-      title: "Desarrollador Frontend – GOBIERNO PROVINCIAL DE MANABI",
+      title: "Desarrollador Frontend",
+      company: "GOBIERNO PROVINCIAL DE MANABÍ",
       date: "Febrero 2024 – Abril 2024",
-      description: "Contribuí al desarrollo de una plataforma de reserva de comidas que mejoraba el control organizativo, permitiendo a los usuarios reservar comidas para el comedor de la empresa. Mis responsabilidades incluyeron la implementación de CRUD para la gestión de periodos, comidas y horarios en la sección de administración. También colaboré en el desarrollo de la interfaz de usuario principal para las reservas de comida.",
-      techs: ["Python", "Flask", "PostgreSQL", "Microservicios", "React", "GIT"]
+      description: "Contribuí al desarrollo de una plataforma de reserva de comidas que mejoraba el control organizativo del comedor empresarial. Implementación de CRUD completo para gestión de periodos, comidas y horarios. Desarrollo de interfaz de usuario intuitiva para las reservas.",
+      techs: ["Python", "Flask", "PostgreSQL", "Microservicios", "React", "Git"]
     }
   ];
 
@@ -39,15 +42,16 @@ export const Experience = () => {
                   <ul className="timeline">
                     {experiences.map((exp, index) => (
                       <li key={index} className="timeline-item">
-                      <div className="timeline-content">
-                        <div className="timeline-header">
-                          <h3>
-                            {exp.title}
-                            {exp.isRecent && <span className="recent-badge">Actual</span>}
-                          </h3>
-                          <span className="timeline-date">{exp.date}</span>
-                        </div>
-                        <p className="timeline-description">{exp.description}</p>
+                        <div className="timeline-content">
+                          <div className="timeline-header">
+                            <h3>
+                              {exp.title}
+                              {exp.company && <><br/><span style={{fontSize: '18px', color: '#AA367C', fontWeight: '600'}}>{exp.company}</span></>}
+                              {exp.isRecent && <span className="recent-badge">Actual</span>}
+                            </h3>
+                            <span className="timeline-date">{exp.date}</span>
+                          </div>
+                          <p className="timeline-description">{exp.description}</p>
                         {exp.techs && (
                           <div className="tech-badges">
                             {exp.techs.map((tech, techIndex) => (

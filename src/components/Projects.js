@@ -12,32 +12,46 @@ export const Projects = () => {
   const projects = [
     {
       title: "BillEase",
-      description: "Design & Development",
+      description: "Aplicación web para gestión de gastos personales con dashboard interactivo y análisis financiero.",
       imgUrl: projImg1,
+      technologies: ["React", "Node.js", "MongoDB"],
+      demoUrl: "#",
+      githubUrl: "#"
     },
     {
       title: "Planifia",
-      description: "Design & Development",
+      description: "Sistema de planificación y gestión de tareas empresariales con funcionalidades colaborativas.",
       imgUrl: projImg2,
+      technologies: ["Vue.js", "Express", "PostgreSQL"],
+      demoUrl: "#",
+      githubUrl: "#"
     },
     {
-      title: "Sistema Médico PUCEM - Backend",
-      description: "Design & Development",
+      title: "Sistema Médico PUCEM",
+      description: "Backend robusto para sistema de gestión hospitalaria con APIs RESTful y autenticación segura.",
       imgUrl: projImg3,
+      technologies: ["NestJS", "TypeScript", "PostgreSQL"],
+      demoUrl: "#",
+      githubUrl: "#"
     },
-    
   ];
 
   const projectsPersonal = [
     {
       title: "Utrace",
-      description: "Design & Development",
+      description: "Aplicación de seguimiento de productos y logística con geolocalización en tiempo real.",
       imgUrl: projImg1,
+      technologies: ["React Native", "Firebase", "Google Maps API"],
+      demoUrl: "#",
+      githubUrl: "#"
     },
     {
       title: "ParkingEye",
-      description: "Design & Development",
+      description: "Sistema inteligente de gestión de estacionamientos con reconocimiento de placas vehiculares.",
       imgUrl: projImg2,
+      technologies: ["Python", "OpenCV", "Flask", "SQLite"],
+      demoUrl: "#",
+      githubUrl: "#"
     },
   ];
 
@@ -50,7 +64,7 @@ export const Projects = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
                 <h2>Proyectos</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>Aquí puedes explorar algunos de mis proyectos más destacados, desde aplicaciones web completas hasta sistemas backend robustos. Cada proyecto refleja mi compromiso con el código limpio, la innovación y la solución de problemas reales a través de la tecnología.</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
@@ -60,7 +74,7 @@ export const Projects = () => {
                       <Nav.Link eventKey="second">Proyectos Personales</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="third">Proyectos Personales </Nav.Link>
+                      <Nav.Link eventKey="third">Certificaciones</Nav.Link>
                     </Nav.Item>
                   </Nav>
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
@@ -93,7 +107,21 @@ export const Projects = () => {
                       </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                      <div className="certifications-content">
+                        <h3>Certificaciones y Formación</h3>
+                        <div className="certification-item">
+                          <h4>🏆 Certificación Scrum Master - Platzi</h4>
+                          <p>Metodologías ágiles, liderazgo de equipos y gestión de proyectos de software.</p>
+                        </div>
+                        <div className="certification-item">
+                          <h4>💻 Ingeniería de Software</h4>
+                          <p>Sólida base en algoritmos, estructuras de datos y patrones de diseño.</p>
+                        </div>
+                        <div className="certification-item">
+                          <h4>📊 Formación en Ingeniería de Datos</h4>
+                          <p>Actualmente expandiendo habilidades en análisis de datos y pipeline de datos.</p>
+                        </div>
+                      </div>
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
