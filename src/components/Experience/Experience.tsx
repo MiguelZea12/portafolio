@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import TrackVisibility from 'react-on-screen';
 import 'animate.css';
-import "../css/experience/experience.css";
+import "./experience.css";
 
 export const Experience = () => {
   const experiences = [

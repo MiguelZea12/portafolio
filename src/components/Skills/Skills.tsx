@@ -1,20 +1,20 @@
 import React from "react";
-import '../css/skills/skills.css';
+// import '../../css/skills/skills.css'; // Eliminado: ahora usamos el CSS modularizado local
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import colorSharp from "../assets/img/color-sharp.png"
-import react from "../assets/img/react.png";
-import python from "../assets/img/python.png";
-import flask from "../assets/img/flask1.png";
-import nest from "../assets/img/nest.png";
-import next from "../assets/img/next.png";
-import typescript from "../assets/img/typescript.png";
-import php from "../assets/img/php1.png";
-import postgres from "../assets/img/postgres.png";
-import docker from "../assets/img/docker.png";
+import colorSharp from "../../assets/img/color-sharp.png"
+import react from "../../assets/img/react.png";
+import python from "../../assets/img/python.png";
+import flask from "../../assets/img/flask1.png";
+import nest from "../../assets/img/nest.png";
+import next from "../../assets/img/next.png";
+import typescript from "../../assets/img/typescript.png";
+import php from "../../assets/img/php1.png";
+import postgres from "../../assets/img/postgres.png";
+import docker from "../../assets/img/docker.png";
 
 // Importa el archivo CSS
-import "../css/skills/skills.css";
+import "./skills.css";
 
 export const Skills = () => {
   const responsive = {

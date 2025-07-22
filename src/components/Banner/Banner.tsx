@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../assets/img/zea.png";
-import "../css/banner/banner.css";
+import headerImg from "../../assets/img/zea.png";
+import "./banner.css";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -57,7 +57,7 @@ export const Banner = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeInLeft" : ""}>
                 <span className="tagline">Bienvenido a mi Portafolio</span>
-                <h1>{`Hola, yo soy Alejandro`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Full Stack Developer", "Backend Developer", "Software Engineer", "Scrum Master" ]'><span className="wrap">{text}</span></span></h1>
+                <h1>{`Hola, yo soy Alejandro`} <span className="txt-rotate" data-period="1000" data-rotate='[ "Full Stack Developer", "Backend Developer", "Software Engineer", "Scrum Master" ]'><span className="wrap">{text}</span></span></h1>
                   <p>Ingeniero de Software especializado en desarrollo de aplicaciones y sistemas web. Con experiencia en desarrollo web, aplicaciones móviles y proyectos prácticos. Certificado como Scrum Master por Platzi, con experiencia liderando equipos. Actualmente enfocado en ampliar mis habilidades como Ingeniero de Datos.</p>
                   <button onClick={() => window.location.href='#contact'} className="btn-connect">
                     Conectemos <ArrowRightCircle size={25} />

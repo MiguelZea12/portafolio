@@ -1,7 +1,16 @@
 import { Col } from "react-bootstrap";
 import { Github, ExternalLink } from "lucide-react";
 
-export const ProjectCard = ({ title, description, imgUrl, technologies, demoUrl, githubUrl }) => {
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  imgUrl: string;
+  technologies?: string[];
+  demoUrl?: string;
+  githubUrl?: string;
+}
+
+export const ProjectCard = ({ title, description, imgUrl, technologies, demoUrl, githubUrl }: ProjectCardProps) => {
   return (
     <Col size={12} sm={6} md={4} className="project-card-col">
       <div className="proj-imgbx">
