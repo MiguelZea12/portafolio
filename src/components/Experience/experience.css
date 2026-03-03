@@ -248,7 +248,7 @@
 
   .tl-left .tl-dot,
   .tl-right .tl-dot {
-    left: 0;
+    left: 1px;
     right: auto;
   }
 
@@ -277,6 +277,6 @@
   .experience-title { font-size: 26px; }
   .tl-item { padding-left: 50px; padding-bottom: 28px; }
   .tl-dot { width: 28px; height: 28px; }
-  .tl-left .tl-dot, .tl-right .tl-dot { left: 0; }
+  .tl-left .tl-dot, .tl-right .tl-dot { left: 4px; }
 }
 
