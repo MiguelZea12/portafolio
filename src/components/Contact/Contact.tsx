@@ -90,16 +90,16 @@ export const Contact = () => {
                   <input type="hidden" name="title" value="Portafolio Web" />
                   <Row>
                     <Col xs={12} className="px-1">
-                      <input type="text" name="name" value={formDetails.name} placeholder="Tu nombre completo" onChange={(e) => onFormUpdate('name', e.target.value)} required />
+                      <input type="text" name="name" value={formDetails.name} maxLength={50} placeholder="Tu nombre completo" onChange={(e) => onFormUpdate('name', e.target.value)} required />
                     </Col>
                     <Col xs={12} sm={6} className="px-1">
-                      <input type="email" name="email" value={formDetails.email} placeholder="Correo Electrónico" onChange={(e) => onFormUpdate('email', e.target.value)} required />
+                      <input type="email" name="email" maxLength={50} value={formDetails.email} placeholder="Correo Electrónico" onChange={(e) => onFormUpdate('email', e.target.value)} required />
                     </Col>
                     <Col xs={12} sm={6} className="px-1">
-                      <input type="tel" name="phone" value={formDetails.phone} placeholder="Teléfono (opcional)" onChange={(e) => onFormUpdate('phone', e.target.value)}/>
+                      <input type="tel" name="phone" maxLength={13} value={formDetails.phone} placeholder="Teléfono (opcional)" onChange={(e) => onFormUpdate('phone', e.target.value)}/>
                     </Col>
                     <Col xs={12} className="px-1">
-                      <textarea rows={6} name="message" value={formDetails.message} placeholder="¿En qué puedo ayudarte?" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
+                      <textarea rows={6} name="message" maxLength={250} value={formDetails.message} placeholder="¿En qué puedo ayudarte?" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
                       <button type="submit"><span>{buttonText}</span></button>
                     </Col>
                     {
