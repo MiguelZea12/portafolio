@@ -1,8 +1,4 @@
 import React from "react";
-// import '../../css/skills/skills.css'; // Eliminado: ahora usamos el CSS modularizado local
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import colorSharp from "../../assets/img/color-sharp.png"
 import react from "../../assets/img/react.png";
 import python from "../../assets/img/python.png";
 import flask from "../../assets/img/flask1.png";
@@ -12,81 +8,106 @@ import typescript from "../../assets/img/typescript.png";
 import php from "../../assets/img/php1.png";
 import postgres from "../../assets/img/postgres.png";
 import docker from "../../assets/img/docker.png";
-
-// Importa el archivo CSS
 import "./skills.css";
 
-export const Skills = () => {
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
+type Skill = {
+  name: string;
+  img?: string;
+  initial?: string;
+  color?: string;
+};
 
+type SkillCategory = {
+  name: string;
+  skills: Skill[];
+};
+
+const skillCategories: SkillCategory[] = [
+  {
+    name: "Frontend",
+    skills: [
+      { name: "React",      img: react },
+      { name: "Next.js",    img: next },
+      { name: "TypeScript", img: typescript },
+      { name: "JavaScript", initial: "JS",  color: "#c9a800" },
+      { name: "HTML / CSS", initial: "HTML", color: "#E44D26" },
+    ]
+  },
+  {
+    name: "Backend",
+    skills: [
+      { name: "NestJS",  img: nest },
+      { name: "Python",  img: python },
+      { name: "Flask",   img: flask },
+      { name: "PHP",     img: php },
+      { name: "Laravel", initial: "LV",  color: "#FF2D20" },
+      { name: "Node.js", initial: "Node", color: "#339933" },
+    ]
+  },
+  {
+    name: "Base de Datos",
+    skills: [
+      { name: "PostgreSQL", img: postgres },
+      { name: "MongoDB",    initial: "MDB", color: "#47A248" },
+      { name: "MySQL",      initial: "SQL", color: "#00758F" },
+    ]
+  },
+  {
+    name: "DevOps & Cloud",
+    skills: [
+      { name: "Docker",      img: docker },
+      { name: "Kubernetes",  initial: "K8s", color: "#326CE5" },
+      { name: "AWS",         initial: "AWS", color: "#FF9900" },
+      { name: "CI/CD",       initial: "CI",  color: "#0052CC" },
+      { name: "Git",         initial: "Git", color: "#F05033" },
+      { name: "BitBucket",   initial: "BB",  color: "#0052CC" },
+    ]
+  }
+];
+
+const SkillCard = ({ skill }: { skill: Skill }) => (
+  <div className="skill-card">
+    <div className="skill-card-icon">
+      {skill.img
+        ? <img src={skill.img} alt={skill.name} />
+        : <span className="skill-initial" style={{ background: skill.color ?? 'var(--accent)' }}>
+            {skill.initial}
+          </span>
+      }
+    </div>
+    <span className="skill-card-name">{skill.name}</span>
+  </div>
+);
+
+export const Skills = () => {
   return (
     <section className="skill" id="skills">
-        <div className="container">
-            <div className="row">
-                <div className="col-12">
-                    <div className="skill-bx wow zoomIn">
-                        <h2>Tecnologias</h2>
-                        <p className="text-skills">En mi trayectoria profesional, he adoptado un enfoque dinámico hacia el aprendizaje y la aplicación de tecnologías emergentes. Mi constante exploración de herramientas, frameworks y lenguajes me permite desarrollar soluciones modernas y eficientes. A continuación, te presento algunas de las tecnologías con las que trabajo</p>
-                        <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
-                            <div className="item">
-                                <img src={python} alt="Image" />
-                                <h5>Python</h5>
-                            </div>
-                            <div className="item">
-                                <img src={flask} alt="Image" />
-                                <h5>Flask</h5>
-                            </div>
-                            <div className="item">
-                                <img src={react} alt="Image" />
-                                <h5>ReactJs</h5>
-                            </div>
-                            <div className="item">
-                                <img src={nest} alt="Image" />
-                                <h5>NestJs</h5>
-                            </div>
-                            <div className="item">
-                                <img src={next} alt="Image" />
-                                <h5>NextJs</h5>
-                            </div>
-                            <div className="item">
-                                <img src={typescript} alt="Image" />
-                                <h5>Typescript</h5>
-                            </div>
-                            <div className="item">
-                                <img src={php} alt="Image" />
-                                <h5>PHP</h5>
-                            </div>
-                            <div className="item">
-                                <img src={postgres} alt="Image" />
-                                <h5>Postgres</h5>
-                            </div>
-                            <div className="item">
-                                <img src={docker} alt="Image" />
-                                <h5>Docker</h5>
-                            </div>
-                        </Carousel>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <div className="skill-bx">
+              <h2>Tecnologías</h2>
+              <p className="text-skills">
+                En mi trayectoria profesional he adoptado un enfoque dinámico hacia el aprendizaje
+                y aplicación de tecnologías modernas. A continuación las herramientas con las que trabajo a diario.
+              </p>
+
+              <div className="skill-categories">
+                {skillCategories.map((cat, ci) => (
+                  <div key={ci} className="skill-category">
+                    <h4 className="skill-category-title">{cat.name}</h4>
+                    <div className="skill-cards-row">
+                      {cat.skills.map((skill, si) => (
+                        <SkillCard key={si} skill={skill} />
+                      ))}
                     </div>
-                </div>
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
         </div>
-        <img className="background-image-left" src={colorSharp} alt="Image" />
+      </div>
     </section>
-  )
-}
+  );
+};

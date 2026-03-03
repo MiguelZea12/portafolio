@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../../assets/img/zea.png";
+import headerImg from "../../assets/img/yoGpt.png";
 import "./banner.css";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
-import 'animate.css';
+import { ArrowRightCircle, Download } from 'react-bootstrap-icons';
 import TrackVisibility from 'react-on-screen';
 
 export const Banner = () => {
@@ -53,23 +52,30 @@ export const Banner = () => {
       <Container>
         <Row className="align-items-center justify-content-center">
           <Col xs={12} md={6} xl={7} className="order-2 order-md-1">
-            <TrackVisibility>
+            <TrackVisibility once>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeInLeft" : ""}>
-                <span className="tagline">Bienvenido a mi Portafolio</span>
-                <h1>{`Hola, yo soy Alejandro`} <span className="txt-rotate" data-period="1000" data-rotate='[ "Full Stack Developer", "Backend Developer", "Software Engineer", "Scrum Master" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Ingeniero de Software especializado en desarrollo de aplicaciones y sistemas web. Con experiencia en desarrollo web, aplicaciones móviles y proyectos prácticos. Certificado como Scrum Master por Platzi, con experiencia liderando equipos. Actualmente enfocado en ampliar mis habilidades como Ingeniero de Datos.</p>
-                  <button onClick={() => window.location.href='#contact'} className="btn-connect">
-                    Conectemos <ArrowRightCircle size={25} />
-                  </button>
+              <div className={isVisible ? "reveal-left" : ""}>
+                <span className="tagline">Disponible para nuevas oportunidades</span>
+                <h1>{`Hola, soy Alejandro`} <span className="txt-rotate" data-period="1000" data-rotate='[ "Full Stack Developer", "Backend Developer", "Software Engineer", "Scrum Master" ]'><span className="wrap">{text}</span></span></h1>
+                  <p>Ingeniero de Software especializado en arquitectura de aplicaciones web y sistemas escalables. Experto en desarrollo Full Stack con NestJS, React y PostgreSQL. Certificado como Scrum Master con experiencia liderando equipos en entornos ágiles.</p>
+                  <div className="banner-cta">
+                    <button onClick={() => window.location.href='#connect'} className="btn-connect">
+                      Conectemos <ArrowRightCircle size={22} />
+                    </button>
+                    <a href="/cv-alejandro-zea.pdf" download="CV-Alejandro-Zea.pdf" className="btn-cv">
+                      Descargar CV <Download size={18} />
+                    </a>
+                  </div>
               </div>}
             </TrackVisibility>
           </Col>
           <Col xs={12} md={6} xl={5} className="order-1 order-md-2 text-center">
-            <TrackVisibility>
+            <TrackVisibility once>
               {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__fadeInRight" : ""}>
-                  <img src={headerImg} alt="Alejandro Zea - Full Stack Developer"/>
+                <div className={isVisible ? "reveal-right" : ""}>
+                  <div className="banner-img-wrapper">
+                    <img src={headerImg} alt="Alejandro Zea - Full Stack Developer"/>
+                  </div>
                 </div>}
             </TrackVisibility>
           </Col>
