@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Mail, Linkedin, Github, MapPin } from 'lucide-react';
 import TrackVisibility from 'react-on-screen';
+import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
   const formInitialDetails = {
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
     phone: '',
     message: ''
@@ -22,23 +22,25 @@ export const Contact = () => {
     });
   };
 
+  const formRef = useRef<HTMLFormElement>(null);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!formRef.current) return;
     setButtonText("Enviando...");
-    let response = await fetch("http://localhost:5000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    setButtonText("Send");
-    let result = await response.json();
-    setFormDetails(formInitialDetails);
-    if (result.code === 200) {
-      setStatus({ success: true, message: 'Message sent successfully' });
-    } else {
-      setStatus({ success: false, message: 'Something went wrong, please try again later.' });
+    try {
+      await emailjs.sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+        formRef.current,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY!
+      );
+      setFormDetails(formInitialDetails);
+      setStatus({ success: true, message: '¡Mensaje enviado! Me pondré en contacto pronto.' });
+    } catch {
+      setStatus({ success: false, message: 'Algo salió mal. Intenta de nuevo o escríbeme directamente.' });
+    } finally {
+      setButtonText("Enviar");
     }
   };
 
@@ -84,22 +86,20 @@ export const Contact = () => {
               {({ isVisible }) =>
                 <div className={`contact-form-wrapper ${isVisible ? "reveal-fade" : ""}`}>
                 <h2>Ponte en contacto</h2>
-                <form onSubmit={handleSubmit}>
+                <form ref={formRef} onSubmit={handleSubmit}>
+                  <input type="hidden" name="title" value="Portafolio Web" />
                   <Row>
-                    <Col xs={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.firstName} placeholder="Nombres" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
+                    <Col xs={12} className="px-1">
+                      <input type="text" name="name" value={formDetails.name} placeholder="Tu nombre completo" onChange={(e) => onFormUpdate('name', e.target.value)} required />
                     </Col>
                     <Col xs={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.lastName} placeholder="Apellidos" onChange={(e) => onFormUpdate('lastName', e.target.value)}/>
+                      <input type="email" name="email" value={formDetails.email} placeholder="Correo Electrónico" onChange={(e) => onFormUpdate('email', e.target.value)} required />
                     </Col>
                     <Col xs={12} sm={6} className="px-1">
-                      <input type="email" value={formDetails.email} placeholder="Correo Electrónico" onChange={(e) => onFormUpdate('email', e.target.value)} />
-                    </Col>
-                    <Col xs={12} sm={6} className="px-1">
-                      <input type="tel" value={formDetails.phone} placeholder="Teléfono" onChange={(e) => onFormUpdate('phone', e.target.value)}/>
+                      <input type="tel" name="phone" value={formDetails.phone} placeholder="Teléfono (opcional)" onChange={(e) => onFormUpdate('phone', e.target.value)}/>
                     </Col>
                     <Col xs={12} className="px-1">
-                      <textarea rows={6} value={formDetails.message} placeholder="¿En qué puedo ayudarte?" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
+                      <textarea rows={6} name="message" value={formDetails.message} placeholder="¿En qué puedo ayudarte?" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
                       <button type="submit"><span>{buttonText}</span></button>
                     </Col>
                     {
