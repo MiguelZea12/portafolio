@@ -26,12 +26,13 @@ const skillCategories: SkillCategory[] = [
   {
     name: "Frontend",
     skills: [
-      { name: "React",      img: react },
-      { name: "Next.js",    img: next },
-      { name: "TypeScript", img: typescript },
-      { name: "Angular",    initial: "NG",   color: "#dd0031" },
-      { name: "JavaScript", initial: "JS",  color: "#c9a800" },
-      { name: "HTML / CSS", initial: "HTML", color: "#E44D26" },
+      { name: "React",        img: react },
+      { name: "React Native", initial: "RN",   color: "#61dafb" },
+      { name: "Next.js",      img: next },
+      { name: "TypeScript",   img: typescript },
+      { name: "Angular",      initial: "NG",   color: "#dd0031" },
+      { name: "JavaScript",   initial: "JS",   color: "#c9a800" },
+      { name: "HTML / CSS",   initial: "HTML", color: "#E44D26" },
     ]
   },
   {
