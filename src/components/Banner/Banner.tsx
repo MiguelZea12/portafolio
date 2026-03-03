@@ -56,7 +56,8 @@ export const Banner = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "reveal-left" : ""}>
                 <span className="tagline">Disponible para nuevas oportunidades</span>
-                <h1>{`Hola, soy Alejandro`} <span className="txt-rotate" data-period="1000" data-rotate='[ "Full Stack Developer", "Backend Developer", "Software Engineer", "Scrum Master" ]'><span className="wrap">{text}</span></span></h1>
+                <h1>{`Hola, soy Alejandro`}</h1>
+                <h1><span className="txt-rotate" data-period="1000" data-rotate='[ "Full Stack Developer", "Backend Developer", "Software Engineer", "Scrum Master" ]'><span className="wrap">{text}</span></span></h1>
                   <p>Ingeniero de Software especializado en arquitectura de aplicaciones web y sistemas escalables. Experto en desarrollo Full Stack con NestJS, React y PostgreSQL. Certificado como Scrum Master con experiencia liderando equipos en entornos ágiles.</p>
                   <div className="banner-cta">
                     <button onClick={() => window.location.href='#connect'} className="btn-connect">

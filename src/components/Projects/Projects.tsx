@@ -3,7 +3,7 @@ import { Container, Row, Col, Tab, Nav, Modal } from "react-bootstrap";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
 import colorSharp2 from "../../assets/img/color-sharp2.png";
 import TrackVisibility from 'react-on-screen';
-import { X, FileText, Download } from "lucide-react";
+import { X, FileText } from "lucide-react";
 
 // ─── Project screenshot imports ──────────────────────────────────────────────
 import billease1 from "../../assets/img/billease/image.png";
@@ -259,10 +259,7 @@ export const Projects = () => {
                 className="cert-iframe"
               >
                 <div className="cert-pdf-fallback">
-                  <p>Tu navegador no puede mostrar el PDF directamente.</p>
-                  <a href={PDF_MAP[selectedCert.file]} target="_blank" rel="noopener noreferrer" className="btn-cert-download">
-                    <Download size={15} /> Abrir diploma
-                  </a>
+                  <p>Tu navegador no puede mostrar este diploma directamente.</p>
                 </div>
               </object>
             ) : (
@@ -271,17 +268,7 @@ export const Projects = () => {
               </div>
             )}
           </div>
-          <div className="cert-modal-footer">
-            {selectedCert && PDF_MAP[selectedCert.file] && (
-              <a
-                href={PDF_MAP[selectedCert.file]}
-                download={selectedCert.name + ".pdf"}
-                className="btn-cert-download"
-              >
-                <Download size={15} /> Descargar diploma
-              </a>
-            )}
-          </div>
+
         </div>
       </Modal>
 

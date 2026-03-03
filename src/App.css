@@ -486,6 +486,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   color: var(--text);
 }
 
+/* First h1 (static text) sits tight against the animated h1 below it */
+.banner h1:first-of-type {
+  margin-bottom: 4px;
+}
+
 .banner p {
   color: var(--text-2);
   font-size: 17px;
@@ -1120,22 +1125,20 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .cert-modal .modal-dialog { max-width: min(900px, 96vw); }
 
-/* Strip Bootstrap's own background so our theme colours take over */
+/* Override Bootstrap modal-content with solid themed background */
 .cert-modal .modal-content {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+  background: var(--bg-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-lg) !important;
+  overflow: hidden;
 }
 
-/* Our own modal shell */
+/* Inner modal shell — just layout, visual styling lives on .modal-content above */
 .cert-modal-content {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .cert-modal-header {
@@ -1143,8 +1146,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: var(--card-bg);
-  border-bottom: 1px solid var(--card-border);
+  background: var(--bg-3);
+  border-bottom: 1px solid var(--border);
 }
 
 .cert-modal-title {
@@ -1198,35 +1201,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   text-align: center;
 }
 
-.cert-modal-footer {
-  background: var(--card-bg);
-  border-top: 1px solid var(--card-border);
-  display: flex;
-  justify-content: flex-end;
-  padding: 12px 24px;
-}
 
-.btn-cert-download {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 20px;
-  border-radius: var(--radius-full);
-  background: var(--gradient);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-  box-shadow: 0 4px 14px rgba(var(--accent-rgb), 0.3);
-}
-
-.btn-cert-download:hover {
-  opacity: 0.87;
-  color: #fff;
-  text-decoration: none;
-  transform: translateY(-2px);
-}
 
 .background-image-right { display: none; }
 
