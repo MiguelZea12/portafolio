@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../../assets/img/yo3.jpeg";
+// @ts-ignore
 import "./banner.css";
 import { ArrowRightCircle, Download } from 'react-bootstrap-icons';
 import TrackVisibility from 'react-on-screen';
