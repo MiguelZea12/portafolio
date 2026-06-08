@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Row, Col, Tab, Nav, Modal } from "react-bootstrap";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
 import colorSharp2 from "../../assets/img/color-sharp2.png";
 import TrackVisibility from 'react-on-screen';
-import { X, FileText } from "lucide-react";
+import { X, FileText, ChevronLeft, ChevronRight } from "lucide-react";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 // ─── Project screenshot imports ──────────────────────────────────────────────
 import billease1 from "../../assets/img/billease/image.png";
@@ -88,6 +89,7 @@ const CERTS: Cert[] = [
   { file: "diploma-visualizacion-datos.pdf",      name: "Visualización de Datos",         category: "Data & Bases",   color: "#10b981" },
   { file: "diploma-estadistica-probabilidad.pdf", name: "Estadística y Probabilidad",     category: "Data & Bases",   color: "#10b981" },
   // Logros & Talleres
+  { file: "diploma-hackaton-pucem-utm.pdf",       name: "Primer lugar del Hackaton PUCEM-UTM", category: "Logros & Talleres", color: "#f97316" },
   { file: "diploma-hultprize.pdf",                name: "Hultprize — 2° Lugar",           category: "Logros & Talleres", color: "#f97316" },
   { file: "diploma-capacitador-viz-datos.pdf",    name: "Capacitador: Visualización de Datos — PUCE-M", category: "Logros & Talleres", color: "#f97316" },
   { file: "diploma-capacitador-depuracion.pdf",   name: "Capacitador: Depuración de Datos — PUCE-M",   category: "Logros & Talleres", color: "#f97316" },
@@ -102,12 +104,17 @@ const CERTS: Cert[] = [
 ];
 
 const CATEGORIES = ["Todos", "Logros & Talleres", "Scrum & Ágil", "JavaScript", "Python", "TypeScript", "Data & Bases", "Otros"];
+const CERTS_PER_PAGE = 10;
+const MOBILE_BREAKPOINT = 768;
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export const Projects = () => {
   const [selectedCert, setSelectedCert] = useState<Cert | null>(null);
   const [activeCategory, setActiveCategory] = useState("Todos");
+  const [certPage, setCertPage] = useState(1);
+  const { width } = useWindowSize();
+  const isMobile = width < MOBILE_BREAKPOINT;
 
   const professionalProjects = [
     {
@@ -164,6 +171,21 @@ export const Projects = () => {
     ? CERTS
     : CERTS.filter(c => c.category === activeCategory);
 
+  const totalPages = isMobile ? Math.ceil(filteredCerts.length / CERTS_PER_PAGE) : 1;
+  const visibleCerts = isMobile
+    ? filteredCerts.slice((certPage - 1) * CERTS_PER_PAGE, certPage * CERTS_PER_PAGE)
+    : filteredCerts;
+
+  useEffect(() => {
+    setCertPage(1);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    if (certPage > totalPages) {
+      setCertPage(Math.max(1, totalPages));
+    }
+  }, [certPage, totalPages]);
+
   return (
     <section className="project" id="projects">
       <Container>
@@ -211,11 +233,14 @@ export const Projects = () => {
                       {/* Certificate grid */}
                       <div className="cert-count">
                         {filteredCerts.length} diploma{filteredCerts.length !== 1 ? "s" : ""}
+                        {isMobile && totalPages > 1 && (
+                          <> · Página {certPage} de {totalPages}</>
+                        )}
                       </div>
                       <div className="cert-grid">
-                        {filteredCerts.map((cert, i) => (
+                        {visibleCerts.map((cert) => (
                           <button
-                            key={i}
+                            key={cert.file}
                             className="cert-card"
                             onClick={() => setSelectedCert(cert)}
                             style={{ "--cert-color": cert.color } as React.CSSProperties}
@@ -227,6 +252,27 @@ export const Projects = () => {
                           </button>
                         ))}
                       </div>
+                      {isMobile && totalPages > 1 && (
+                        <div className="cert-pagination">
+                          <button
+                            className="cert-page-btn"
+                            onClick={() => setCertPage(p => Math.max(1, p - 1))}
+                            disabled={certPage === 1}
+                            aria-label="Página anterior"
+                          >
+                            <ChevronLeft size={18} />
+                          </button>
+                          <span className="cert-page-indicator">{certPage} / {totalPages}</span>
+                          <button
+                            className="cert-page-btn"
+                            onClick={() => setCertPage(p => Math.min(totalPages, p + 1))}
+                            disabled={certPage === totalPages}
+                            aria-label="Página siguiente"
+                          >
+                            <ChevronRight size={18} />
+                          </button>
+                        </div>
+                      )}
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>

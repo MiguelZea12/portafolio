@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../../assets/img/yoGpt.png";
+import headerImg from "../../assets/img/yo2.png";
 import "./banner.css";
 import { ArrowRightCircle, Download } from 'react-bootstrap-icons';
 import TrackVisibility from 'react-on-screen';

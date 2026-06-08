@@ -602,7 +602,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   max-width: unset !important;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   border: 5px solid var(--bg);
   display: block;
   transition: transform 0.4s ease;
@@ -1055,6 +1055,46 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   color: var(--text-3);
   font-size: 13px;
   margin-bottom: 20px;
+}
+
+.cert-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.cert-page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-strong);
+  background: var(--card-bg);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cert-page-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cert-page-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.cert-page-indicator {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  min-width: 56px;
+  text-align: center;
 }
 
 /* Responsive certificate grid */
