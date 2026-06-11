@@ -204,7 +204,7 @@ export const Projects = () => {
             <TrackVisibility once>
               {({ isVisible }) =>
               <div className={isVisible ? "reveal-fade" : ""}>
-                <h2>Proyectos</h2>
+                <h2>Proyectos & Certificados</h2>
                 <p>Proyectos profesionales que reflejan mi experiencia construyendo productos reales: desde sistemas de facturación y gestión de citas hasta apps móviles con integración de pagos y plataformas de cobranza en campo.</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
