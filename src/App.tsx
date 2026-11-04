@@ -6,6 +6,7 @@ import { NavBar } from "./components/NavBar/NavBar";
 import { Banner } from "./components/Banner/Banner";
 import { Experience } from "./components/Experience/Experience";
 import { Skills } from "./components/Skills/Skills";
+import { Education } from "./components/Education/Education";
 import { Projects } from "./components/Projects/Projects";
 import { Contact } from "./components/Contact/Contact";
 import { Footer } from "./components/Footer/Footer";
@@ -19,6 +20,7 @@ function App() {
         <Skills />
         <Experience />
         <Projects />
+        <Education />
         <Contact />
         <Footer />
       </div>

@@ -1,52 +1,52 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../../assets/img/yo3.jpeg";
+import headerImg from "../../assets/img/yodef.jpeg";
 // @ts-ignore
 import "./banner.css";
 import { ArrowRightCircle, Download } from 'react-bootstrap-icons';
 import TrackVisibility from 'react-on-screen';
+
+const TO_ROTATE = [
+  "Full Stack Developer",
+  "Backend Developer",
+  "Ingeniero de Software",
+  "Scrum Master",
+] as const;
+const PERIOD = 2000;
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
-  const [index, setIndex] = useState(1);
-  const toRotate = [ "Full Stack Developer", "Backend Developer", "Ingeniero de Software", "Scrum Master" ];
-  const period = 2000;
 
-  useEffect(() => {
-    let ticker = setInterval(() => {
-      tick();
-    }, delta);
-
-    return () => { clearInterval(ticker) };
-  }, [text])
-
-  const tick = () => {
-    let i = loopNum % toRotate.length;
-    let fullText = toRotate[i];
-    let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+  const tick = useCallback(() => {
+    const i = loopNum % TO_ROTATE.length;
+    const fullText = TO_ROTATE[i];
+    const updatedText = isDeleting
+      ? fullText.substring(0, text.length - 1)
+      : fullText.substring(0, text.length + 1);
 
     setText(updatedText);
 
     if (isDeleting) {
-      setDelta(prevDelta => prevDelta / 2);
+      setDelta((prevDelta) => prevDelta / 2);
     }
 
     if (!isDeleting && updatedText === fullText) {
       setIsDeleting(true);
-      setIndex(prevIndex => prevIndex - 1);
-      setDelta(period);
+      setDelta(PERIOD);
     } else if (isDeleting && updatedText === '') {
       setIsDeleting(false);
-      setLoopNum(loopNum + 1);
-      setIndex(1);
+      setLoopNum((n) => n + 1);
       setDelta(500);
-    } else {
-      setIndex(prevIndex => prevIndex + 1);
     }
-  }
+  }, [loopNum, isDeleting, text]);
+
+  useEffect(() => {
+    const ticker = setInterval(tick, delta);
+    return () => clearInterval(ticker);
+  }, [text, delta, tick]);
 
   return (
     <section className="banner" id="home">

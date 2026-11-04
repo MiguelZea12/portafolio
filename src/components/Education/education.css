@@ -1,0 +1,49 @@
+/************ Education Section ************/
+.education {
+  padding: 90px 0;
+  position: relative;
+  background-color: var(--bg-2);
+  transition: background-color 0.3s ease;
+}
+
+.education h2 {
+  font-size: 44px;
+  font-weight: 700;
+  text-align: center;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 14px;
+}
+
+.education > .container > .row > .col-12 > div > p {
+  color: var(--text-2);
+  font-size: 17px;
+  letter-spacing: 0.2px;
+  line-height: 1.75;
+  margin: 0 auto 12px auto;
+  text-align: center;
+  width: 70%;
+  max-width: 760px;
+}
+
+.education > .container > .row > .col-12 > div > p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .education {
+    padding: 60px 0;
+  }
+
+  .education h2 {
+    font-size: 32px;
+  }
+
+  .education > .container > .row > .col-12 > div > p {
+    width: 96%;
+    font-size: 15px;
+  }
+}

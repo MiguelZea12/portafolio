@@ -49,7 +49,6 @@ const PDF_MAP: Record<string, string> = {
   "diploma-typescript-22.pdf":             require("../../assets/certificados/diploma-typescript-22.pdf"),
   "diploma-visualizacion-datos.pdf":       require("../../assets/certificados/diploma-visualizacion-datos.pdf"),
   "diploma-docker-fundamentos.pdf":          require("../../assets/certificados/diploma-docker-fundamentos.pdf"),
-  "Titulo_Tercer_Nivel_Ingeniero.pdf":       require("../../assets/certificados/Titulo_Tercer_Nivel_Ingeniero.pdf"),
   // Logros & Talleres
   "diploma-hultprize.pdf":                 require("../../assets/certificados/diploma-hultprize.pdf"),
   "diploma-capacitador-viz-datos.pdf":     require("../../assets/certificados/diploma-capacitador-viz-datos.pdf"),
@@ -105,13 +104,6 @@ const CERTS: Cert[] = [
   { file: "diploma-configuracion-windows.pdf",    name: "Configuración Windows",          category: "Otros",          color: "#6366f1" },
   { file: "diploma-docker-fundamentos.pdf",       name: "Docker Fundamentos",             category: "Otros",          color: "#6366f1" },
 ];
-
-const DEGREE: Cert = {
-  file: "Titulo_Tercer_Nivel_Ingeniero.pdf",
-  name: "Ingeniero — Título de Tercer Nivel",
-  category: "Formación Académica",
-  color: "#a855f7",
-};
 
 const CATEGORIES = ["Todos", "Logros & Talleres", "Scrum & Ágil", "JavaScript", "Python", "TypeScript", "Data & Bases", "Otros"];
 const CERTS_PER_PAGE = 10;
@@ -214,9 +206,6 @@ export const Projects = () => {
                     <Nav.Item>
                       <Nav.Link eventKey="second">Certificaciones</Nav.Link>
                     </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link eventKey="third">Título de Tercer Nivel</Nav.Link>
-                    </Nav.Item>
                   </Nav>
                   <Tab.Content>
                     {/* ── Proyectos ── */}
@@ -286,43 +275,6 @@ export const Projects = () => {
                           </button>
                         </div>
                       )}
-                    </Tab.Pane>
-
-                    {/* ── Título de Tercer Nivel ── */}
-                    <Tab.Pane eventKey="third">
-                      <div className="degree-showcase">
-                        <p className="degree-eyebrow">Formación académica</p>
-
-                        <button
-                          type="button"
-                          className="degree-document"
-                          onClick={() => setSelectedCert(DEGREE)}
-                          aria-label="Ver título de tercer nivel"
-                        >
-                          <div className="degree-document-glow" aria-hidden="true" />
-                          <div className="degree-document-frame">
-                            {PDF_MAP[DEGREE.file] ? (
-                              <iframe
-                                src={`${PDF_MAP[DEGREE.file]}#toolbar=0&navpanes=0`}
-                                title={DEGREE.name}
-                                className="degree-document-preview"
-                              />
-                            ) : (
-                              <div className="degree-document-fallback">
-                                <FileText size={48} />
-                                <span>Ver documento</span>
-                              </div>
-                            )}
-                          </div>
-                        </button>
-
-                        <span className="degree-pill">Título de Tercer Nivel</span>
-                        <h3 className="degree-name">Ingeniero de Software</h3>
-                        <p className="degree-caption">
-                          Título profesional de tercer nivel que acredita mi formación como Ingeniero.
-                        </p>
-                        <p className="degree-hint">Clic en el documento para verlo completo</p>
-                      </div>
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
